@@ -1,23 +1,17 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <NavBar />
     <router-view/>
-    <Posts 
-      :posts = "posts"
-    />
   </div>
 </template>
 
 <script>
-  import Posts from './components/Posts.vue'
+  import NavBar from './components/NavBar.vue'
 
   export default {
     name: 'App',
     components: {
-        Posts
+        NavBar
     },
 
     data() {
@@ -25,18 +19,6 @@
           posts: [],
       }
     },
-
-    mounted: function() {
-      fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'get'
-      })
-      .then(response => {
-      return response.json()
-      })
-      .then(jsonData => {
-      this.posts = jsonData
-      })
-    }
   }
 </script>
 
